@@ -1,6 +1,6 @@
 {
   "name": "v-download",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Vue.js directive to download (and optionally transform) data",
   "main": "dist/main.js",
   "scripts": {
@@ -26,6 +26,10 @@
     "downloadjs": "^1.4.7"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
     "webpack": "^4.0.0-beta.1",
     "webpack-cli": "^2.0.5"
   }

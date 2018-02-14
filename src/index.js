@@ -1,6 +1,6 @@
 import download from 'downloadjs';
 
-export const DownloadData = {
+export const downloadData = {
   bind(el, { value, arg }) {
     if (arg === 'type') {
       el.$downloadType = value;
@@ -69,7 +69,7 @@ function toCsv(data) {
 }
 
 const install = Vue => {
-  Vue.directive('DownloadData', DownloadData);
+  Vue.directive('DownloadData', downloadData);
 };
 
 export default install;
