@@ -1,0 +1,32 @@
+{
+  "name": "v-download",
+  "version": "1.0.2",
+  "description": "Vue.js directive to download (and optionally transform) data",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikemenaker/v-download.git"
+  },
+  "keywords": [
+    "Vue.js",
+    "Directive",
+    "Download"
+  ],
+  "author": "Mike Menaker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mikemenaker/v-download/issues"
+  },
+  "homepage": "https://github.com/mikemenaker/v-download#readme",
+  "dependencies": {
+    "downloadjs": "^1.4.7"
+  },
+  "devDependencies": {
+    "webpack": "^4.0.0-beta.1",
+    "webpack-cli": "^2.0.5"
+  }
+}
