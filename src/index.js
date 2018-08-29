@@ -13,10 +13,13 @@ export const downloadData = {
           } else {
             download(toCsv(el.$downloadValue), 'data.csv', 'application/csv');
           }
-        } else if (
-          el.$downloadType &&
-          el.$downloadType.toLowerCase() === 'json'
-        ) {
+        } else if (el.$downloadType && el.$downloadType.toLowerCase() === 'tsv') {
+          if (typeof el.$downloadValue === 'string') {
+            download(el.$downloadValue, 'data.tsv', 'application/tsv');
+          } else {
+            download(toTsv(el.$downloadValue), 'data.tsv', 'application/tsv');
+          }
+        } else if (el.$downloadType && el.$downloadType.toLowerCase() === 'json') {
           if (typeof el.$downloadValue === 'string') {
             download(el.$downloadValue, 'data.json', 'application/json');
           } else {
@@ -66,6 +69,21 @@ function toCsv(data) {
     csvData += '\r\n';
   });
   return csvData;
+}
+
+function toTsv(data) {
+  const keys = Object.keys(data[0]);
+  let tsvData = keys.join('\t') + '\r\n';
+
+  data.map(item => {
+    for (let key of keys) {
+      let escaped = item[key] + ''; // cast Numbers to string
+      tsvData += `${escaped}\t`;
+    }
+    tsvData = tsvData.slice(0, tsvData.length - 1);
+    tsvData += '\r\n';
+  });
+  return tsvData;
 }
 
 const install = Vue => {
