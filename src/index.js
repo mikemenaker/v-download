@@ -44,13 +44,14 @@ function handler(el) {
                 ? el.$downloadValue
                 : JSON.stringify(el.$downloadValue, null, 2);
             download(downloadData, fileName, 'application/json');
+        } else {
+            const fileName = el.$downloadFileName || 'data';
+            download(el.$downloadValue, fileName, el.$downloadType);
         }
+    } else {
         const fileName = el.$downloadFileName || 'data';
-        download(el.$downloadValue, fileName, el.$downloadType);
+        download(el.$downloadValue, fileName);
     }
-
-    const fileName = el.$downloadFileName || 'data';
-    download(el.$downloadValue, fileName);
 }
 
 function toCsv(data) {
@@ -61,7 +62,7 @@ function toCsv(data) {
         for (let key of keys) {
             let escapedCSV = item[key] + ''; // cast Numbers to string
             if (escapedCSV.match(/[,"\n]/)) {
-                escapedCSV = '"' + escapedCSV.replace(/\"/g, '""') + '"';
+                escapedCSV = '"' + escapedCSV.replace(/"/g, '""') + '"';
             }
             csvData += escapedCSV + ',';
         }
